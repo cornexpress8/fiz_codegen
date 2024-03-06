@@ -14,6 +14,18 @@
         align-items: center;
         height: 100vh;
         background-color: #f4f4f4;
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    }
+    body.dark-mode #output {
+        background-color: #333; /* Darker background color for the output box */
+        color: #b1b1b1; /* Lighter text color for better readability in dark mode */
+        border-color: #555; /* Darker border color to match the dark theme */
+    }
+    body.dark-mode #lastUpdate {
+        color: #555555; /* Lighter text color for better readability in dark mode */
+    }
+    body.dark-mode {
+        background-color: #222; /* Dark mode background color */
     }
     #container {
         text-align: left;
@@ -29,6 +41,7 @@
         background-color: #fff;
         overflow-wrap: break-word;
         white-space: pre-wrap; /* Preserve line breaks and spaces */
+        transition: background-color 0.3s;
     }
     button {
         padding: 10px 20px;
@@ -46,6 +59,12 @@
     button:active {
         transform: scale(0.95); /* Scale down when button is pressed */
     }
+    #lastUpdate {
+        color: #888;
+        font-size: 12px;
+        margin-top: 10px;
+        transition: color 0.3s ease; /* Smooth transition for background color */
+    }
 </style>
 </head>
 <body>
@@ -53,6 +72,8 @@
     <div id="output"></div>
     <button onclick="generateString()">генерировать</button>
     <button onclick="copyToClipboard()" id="copyButton" style="display: none;">скопировать</button>
+    <div id="lastUpdate">last update - 2/28/2024</div>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
 </div>
 
 <script>
@@ -142,6 +163,10 @@ function copyToClipboard() {
     dummyTextarea.select();
     document.execCommand("copy");
     document.body.removeChild(dummyTextarea);
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
 }
 </script>
 </body>
