@@ -14,18 +14,18 @@
         align-items: center;
         height: 100vh;
         background-color: #f4f4f4;
-        transition: background-color 0.3s ease; /* Smooth transition for background color */
+        transition: background-color 0.3s ease;
     }
     body.dark-mode #output {
-        background-color: #333; /* Darker background color for the output box */
-        color: #b1b1b1; /* Lighter text color for better readability in dark mode */
-        border-color: #555; /* Darker border color to match the dark theme */
+        background-color: #333;
+        color: #b1b1b1;
+        border-color: #555;
     }
     body.dark-mode #lastUpdate {
-        color: #555555; /* Lighter text color for better readability in dark mode */
+        color: #555555;
     }
     body.dark-mode {
-        background-color: #222; /* Dark mode background color */
+        background-color: #222;
     }
     #container {
         text-align: left;
@@ -40,9 +40,11 @@
         border-radius: 5px;
         background-color: #fff;
         overflow-wrap: break-word;
-        white-space: pre-wrap; /* Preserve line breaks and spaces */
-        transition: background-color 0.3s;
+        white-space: pre-wrap;
+        transition: background-color 0.3s, transform 0.3s ease; /* Add transform to the transition */
+        transform-origin: center; /* Ensures scaling is centered */
     }
+
     button {
         padding: 10px 20px;
         font-size: 16px;
@@ -51,19 +53,27 @@
         color: #fff;
         border: none;
         border-radius: 5px;
-        transition: background-color 0.3s, transform 0.3s ease-out; /* Added transform property for scaling */
+        transition: background-color 0.3s, transform 0.3s ease-out;
     }
     button:hover {
         background-color: #0056b3;
     }
     button:active {
-        transform: scale(0.95); /* Scale down when button is pressed */
+        transform: scale(0.95);
     }
     #lastUpdate {
         color: #888;
         font-size: 12px;
         margin-top: 10px;
-        transition: color 0.3s ease; /* Smooth transition for background color */
+        transition: color 0.3s ease;
+    }
+    /* Additional styles for the dark mode button */
+    #darkModeToggle {
+        position: fixed;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        z-index: 1000;
     }
 </style>
 </head>
@@ -72,8 +82,8 @@
     <div id="output"></div>
     <button onclick="generateString()">генерировать</button>
     <button onclick="copyToClipboard()" id="copyButton" style="display: none;">скопировать</button>
-    <div id="lastUpdate">last update - 2/28/2024</div>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div id="lastUpdate">код на 28/02/2024<br>последняя версия сайта: v1.01.2</div>
+    <button onclick="toggleDarkMode()" id="darkModeToggle">сменить тему</button>
 </div>
 
 <script>
